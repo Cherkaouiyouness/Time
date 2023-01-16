@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1 id="Horloge"></h1>
+    </header>
+</body>
+
+
+
+
+
+<script>
+function Horloge(){
+    let temps = new Date();
+let heures = temps.getHours();
+let minutes = temps.getMinutes();
+let secondes = temps.getSeconds();
+let jour = temps.getDay();
+let mois = temps.getMonth();
+let year = temps.getFullYear();
+let utc = temps.getUTCDate();
+
+
+listeMonth = ["Janvier","Fevrier","Mars","Mai","Avril","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre"]
+mois = listeMonth[mois];
+
+
+listeDay = ["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"];
+jour = listeDay[jour];
+
+
+if ( heures < 10){
+    heures = "0" + heures
+}
+if ( minutes < 10){
+    minutes = "0" + minutes
+}
+if ( secondes < 10){
+    secondes = "0" + secondes
+}
+
+let heureActuelle = heures + ":" + minutes + ":" + secondes + " " + utc + " " + jour + " " + mois + " " + year  ;
+let main = document.getElementById("Horloge");
+main.innerHTML = heureActuelle
+setTimeout("Horloge()" , 1000); 
+}
+document.body.onload = Horloge;
+</script>
+</html>
